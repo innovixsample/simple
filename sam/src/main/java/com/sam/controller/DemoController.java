@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.sam.user.entity.User;
-import com.sam.user.service.UserService;
+import com.sam.db2.entity.User;
+import com.sam.db2.service.UserService;
 
 @Controller
 
