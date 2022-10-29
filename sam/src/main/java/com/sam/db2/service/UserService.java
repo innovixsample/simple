@@ -1,12 +1,14 @@
-package com.sam.user.service;
+package com.sam.db2.service;
+
+
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sam.user.entity.User;
-import com.sam.user.repository.UserRepository;
+import com.sam.db2.entity.User;
+import com.sam.db2.repository.UserRepository;
 
 @Service
 public class UserService {

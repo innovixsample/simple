@@ -1,4 +1,4 @@
-package com.sam.user.config;
+package com.sam.db2.config;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -17,30 +17,30 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(entityManagerFactoryRef = "userentityManagerFactory",
-						transactionManagerRef = "userTransactionManager", 
-						basePackages = "com.sam.user.repository")
-public class UserConfig {
-	@Bean(name = "userDataSource")
+@EnableJpaRepositories(entityManagerFactoryRef = "db2entityManagerFactory",
+						transactionManagerRef = "db2TransactionManager", 
+						basePackages = "com.sam.db2.repository")
+public class DB2Config {
+	@Bean(name = "db2DataSource")
 	@ConfigurationProperties(prefix = "db2.datasource")
-	public DataSource userDataSource() {
+	public DataSource db2DataSource() {
 		return DataSourceBuilder.create().build();
 	}
 
-	@Bean(name = "userentityManagerFactory")
+	@Bean(name = "db2entityManagerFactory")
 	public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(
 			EntityManagerFactoryBuilder builder,
-			@Qualifier("userDataSource") DataSource dataSource) {
+			@Qualifier("db2DataSource") DataSource dataSource) {
 
-		return builder.dataSource(dataSource).
-				packages("com.sam.user.entity")
+		return builder.dataSource(dataSource)
+				.packages("com.sam.db2.entity")
 				.persistenceUnit("db2")
 				.build();
 	}
 
-	@Bean(name = "userTransactionManager")
-	public PlatformTransactionManager userTransactionManager(
-			@Qualifier("userentityManagerFactory") EntityManagerFactory userentityManagerFactory) {
-		return new JpaTransactionManager(userentityManagerFactory);
+	@Bean(name = "db2TransactionManager")
+	public PlatformTransactionManager db2TransactionManager(
+			@Qualifier("db2entityManagerFactory") EntityManagerFactory db2entityManagerFactory) {
+		return new JpaTransactionManager(db2entityManagerFactory);
 	}
 }

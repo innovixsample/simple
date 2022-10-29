@@ -1,4 +1,5 @@
-package com.sam.company.config;
+package com.sam.db1.config;
+
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -19,31 +20,31 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-		entityManagerFactoryRef = "companyentityManagerFactory",
+		entityManagerFactoryRef = "db1entityManagerFactory",
 						transactionManagerRef = "companyTransactionManager",
-						basePackages = "com.sam.company.repository")
-public class CompanyConfig {
+						basePackages = "com.sam.db1.repository")
+public class DB1Config {
 	@Primary
-	@Bean(name = "companyDataSource")
+	@Bean(name = "db1DataSource")
 	@ConfigurationProperties(prefix = "spring.datasource")
-	public DataSource companyDataSource() {
+	public DataSource db1DataSource() {
 		return DataSourceBuilder.create().build();
 	}
 
 	@Primary
-	@Bean(name = "companyentityManagerFactory")
-	public LocalContainerEntityManagerFactoryBean companyentityManagerFactoryBean(
+	@Bean(name = "db1entityManagerFactory")
+	public LocalContainerEntityManagerFactoryBean db1entityManagerFactoryBean(
 			EntityManagerFactoryBuilder builder,
-			@Qualifier("companyDataSource") DataSource dataSource) {
+			@Qualifier("db1DataSource") DataSource dataSource) {
 
-		return builder.dataSource(dataSource).packages("com.sam.company.entity").persistenceUnit("db1")
+		return builder.dataSource(dataSource).packages("com.sam.db1.entity").persistenceUnit("db1")
 				.build();
 	}
 
 	@Primary
 	@Bean(name = "companyTransactionManager")
 	public PlatformTransactionManager companyTransactionManager(
-			@Qualifier("companyentityManagerFactory") EntityManagerFactory companyentityManagerFactory) {
-		return new JpaTransactionManager(companyentityManagerFactory);
+			@Qualifier("db1entityManagerFactory") EntityManagerFactory db1entityManagerFactory) {
+		return new JpaTransactionManager(db1entityManagerFactory);
 	}
 }

@@ -1,4 +1,4 @@
-package com.sam.user.entity;
+package com.sam.db2.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +10,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "user_details")
 public class User {
-
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
