@@ -19,10 +19,10 @@ import com.sam.db2.service.UserService;
 @RestController
 public class UserCompanyRestController {
 
-	@Autowired
+	@Autowired(required = false)
 	CompanyService companyService;
 
-	@Autowired
+	@Autowired(required = false)
 	UserService userService;
 
 	@GetMapping("/user/get")

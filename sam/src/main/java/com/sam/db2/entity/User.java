@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.ToString;
+
 @Entity
 @Table(name = "user_details")
 public class User {
@@ -63,5 +65,26 @@ public class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
+	public User(int id, String user_name, long phone, String email_id, String address) {
+		super();
+		this.id = id;
+		this.user_name = user_name;
+		this.phone = phone;
+		this.email_id = email_id;
+		this.address = address;
+	}
+
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", user_name=" + user_name + ", phone=" + phone + ", email_id=" + email_id
+				+ ", address=" + address + "]";
+	}
+	
 
 }

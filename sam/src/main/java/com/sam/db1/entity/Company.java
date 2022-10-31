@@ -64,4 +64,19 @@ public class Company {
 		this.address = address;
 	}
 
+	public Company(int id, String company_name, long phone, String email_id, String address) {
+		super();
+		this.id = id;
+		this.company_name = company_name;
+		this.phone = phone;
+		this.email_id = email_id;
+		this.address = address;
+	}
+
+	public Company() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+
 }

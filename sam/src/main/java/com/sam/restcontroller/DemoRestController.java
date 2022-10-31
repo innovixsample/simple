@@ -37,7 +37,7 @@ It was added to Spring 4.0 version.
 public class DemoRestController {
 
 
-	@Autowired
+	@Autowired(required = false)
 	UserService userService;
 
 	@GetMapping("/user/get")

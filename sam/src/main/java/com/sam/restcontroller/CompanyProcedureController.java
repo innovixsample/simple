@@ -12,7 +12,7 @@ import com.sam.db1.service.CompanyService;
 @RequestMapping("/sp")
 public class CompanyProcedureController {
 
-	@Autowired
+	@Autowired(required = false)
 	CompanyService companyService;
 
 	

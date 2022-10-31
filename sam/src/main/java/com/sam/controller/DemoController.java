@@ -37,7 +37,7 @@ It was added to Spring 2.5 version.
 public class DemoController {
 
 	@Autowired
-	UserService userService;
+	private UserService userService;
 
 	@GetMapping("/sample")
 	@ResponseBody
